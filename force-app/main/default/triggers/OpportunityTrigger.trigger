@@ -29,7 +29,7 @@ trigger OpportunityTrigger on Opportunity (
  switch on Trigger.operationType {
     when BEFORE_INSERT {
         OpportunityTriggerHandler.setType(Trigger.new);
-        OpportunityTriggerHandler.createTaskForOpportunity(Trigger.new);
+        
         
     }
     when BEFORE_UPDATE {
@@ -39,7 +39,7 @@ trigger OpportunityTrigger on Opportunity (
         
     }
     when AFTER_INSERT {
-        
+        OpportunityTriggerHandler.createTaskForOpportunity(Trigger.new);
     }
     when BEFORE_DELETE {
         OpportunityTriggerHandler.validateDelete(Trigger.old);

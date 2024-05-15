@@ -83,7 +83,9 @@ public with sharing class AccountHelper {
             con.AccountId = acc.Id;
             contacts.add(con);
         }
-
-        insert contacts; 
+        Database.DMLOptions dmlOptions = new DataBase.DMLOptions();
+        dmlOptions.DuplicateRuleHeader.AllowSave = true;
+        dmlOptions.DuplicateRuleHeader.RunAsCurrentUser = false;
+        Database.insert(contacts, dmlOptions); 
     }
 }
